@@ -1,11 +1,8 @@
 package com.telephony;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.os.Build;
-import android.os.Bundle;
 import android.telephony.CellIdentityCdma;
 import android.telephony.CellIdentityGsm;
 import android.telephony.CellIdentityLte;
@@ -15,15 +12,12 @@ import android.telephony.CellInfoCdma;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoLte;
 import android.telephony.CellInfoWcdma;
-import android.telephony.CellLocation;
 import android.telephony.CellSignalStrengthCdma;
 import android.telephony.CellSignalStrengthGsm;
 import android.telephony.CellSignalStrengthLte;
 import android.telephony.CellSignalStrengthWcdma;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
-import android.telephony.SubscriptionInfo;
-import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
@@ -92,6 +86,11 @@ public class TelephonyModule extends ReactContextBaseJavaModule
         mReactContext
                 .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                 .emit(eventName, params);
+    }
+
+    @ReactMethod
+    public void createLog(String logMessage) {
+        Log.d("DEBUG", "RNTelephony: " + logMessage);
     }
 
     @ReactMethod
